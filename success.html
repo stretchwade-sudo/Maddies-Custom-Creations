@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Confirmed — Maddie's Custom Creations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --pink: #f472b6; --pink-light: #fce7f3; --pink-mid: #fbcfe8;
+      --mauve: #c084fc; --cream: #fff7f9; --text: #3b1a2e; --text-soft: #7c4d6a; --white: #ffffff;
+    }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: linear-gradient(135deg, #fce7f3 0%, #f3e8ff 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      color: var(--text);
+    }
+    .card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 52px 44px;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(244,114,182,0.18);
+    }
+    .icon { font-size: 4rem; margin-bottom: 20px; }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--pink);
+      margin-bottom: 14px;
+    }
+    p {
+      color: var(--text-soft);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+    .divider {
+      width: 60px; height: 2px;
+      background: var(--pink-mid);
+      border-radius: 2px;
+      margin: 24px auto;
+    }
+    .note {
+      background: var(--pink-light);
+      border-radius: 14px;
+      padding: 16px 20px;
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      margin-bottom: 32px;
+    }
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--pink), var(--mauve));
+      color: var(--white);
+      padding: 13px 36px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(244,114,182,0.3);
+      transition: transform 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); text-decoration: none; }
+    .footer-note {
+      margin-top: 28px;
+      font-size: 0.82rem;
+      color: #b07a9e;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">🎀</div>
+    <h1>You're all set!</h1>
+    <p>Your payment went through — thank you so much for your order!</p>
+    <div class="divider"></div>
+    <div class="note">
+      💌 Maddie will reach out to you shortly to get all the details for your custom poster — name, colors, occasion, and anything else that makes it uniquely <em>her</em>.
+    </div>
+    <a href="/" class="btn">Back to Home</a>
+    <p class="footer-note">Questions? Text Maddie at <a href="tel:2099189177" style="color:var(--pink)">(209) 918-9177</a></p>
+  </div>
+</body>
+</html>

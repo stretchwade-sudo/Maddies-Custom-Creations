@@ -1108,69 +1108,12 @@
     }, { threshold: 0.4 });
     sections.forEach(s => observer.observe(s));
 
-    // ===== ORDER MODAL & STRIPE PAYMENT LINKS =====
-    //
-    // HOW TO GET YOUR PAYMENT LINKS (takes ~5 min, free):
-    //  1. Go to https://dashboard.stripe.com  and sign up / log in
-    //  2. Click  Payment Links  in the left menu → "+ New"
-    //  3. Add a product (e.g. "Poster Board"), set the price, save
-    //  4. Copy the link (looks like https://buy.stripe.com/xxxx)
-    //  5. Paste it below next to the matching product key
-    //  Apple Pay & Google Pay are enabled automatically on those links!
-    //
-    const PAYMENT_LINKS = {
-      'poster-board':  'https://buy.stripe.com/REPLACE_POSTER_BOARD',
-      'poster-30x30':  'https://buy.stripe.com/REPLACE_30x30',
-      'poster-36x30':  'https://buy.stripe.com/REPLACE_36x30',
-      'poster-48x30':  'https://buy.stripe.com/REPLACE_48x30',
-      'poster-60x30':  'https://buy.stripe.com/REPLACE_60x30',
-    };
-
-    const overlay     = document.getElementById('modalOverlay');
-    const modalClose  = document.getElementById('modalClose');
-    const modalPrice  = document.getElementById('modalPrice');
-    const modalTitle  = document.getElementById('modalTitle');
-    const modalPayBtn = document.getElementById('modalPayBtn');
-    const noteField   = document.getElementById('customerNote');
-    let currentProductId = null;
-
-    // Open modal when any "Order Now" button is clicked
+    // ===== ORDER BUTTONS → OPEN VENMO =====
     document.querySelectorAll('.order-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        currentProductId = btn.dataset.product;
-        modalTitle.textContent = 'Order — ' + btn.dataset.name;
-        modalPrice.textContent = btn.dataset.price;
-        noteField.value = '';
-        overlay.classList.add('open');
-        noteField.focus();
+        // Open Venmo profile in new tab
+        window.open('https://venmo.com/maddiemarionchow', '_blank');
       });
-    });
-
-    // Close modal
-    function closeModal() { overlay.classList.remove('open'); }
-    modalClose.addEventListener('click', closeModal);
-    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-    // Pay button → open Stripe Payment Link in same tab
-    modalPayBtn.addEventListener('click', () => {
-      if (!currentProductId) return;
-
-      const link = PAYMENT_LINKS[currentProductId];
-
-      // Guard: remind Maddie to add her real links if still placeholder
-      if (!link || link.includes('REPLACE')) {
-        alert('Payment links aren\'t set up yet!\n\nGo to dashboard.stripe.com → Payment Links, create one for this product, and paste the URL into the PAYMENT_LINKS section of index.html.');
-        return;
-      }
-
-      // Append the customer note as a URL param so it shows in Stripe dashboard
-      const note = noteField.value.trim();
-      const url  = note ? link + '?prefilled_email=&client_reference_id=' + encodeURIComponent(note) : link;
-
-      modalPayBtn.textContent = 'Opening checkout…';
-      modalPayBtn.disabled = true;
-      window.location.href = url;
     });
   </script>
 
